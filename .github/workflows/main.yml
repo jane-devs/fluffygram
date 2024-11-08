@@ -105,7 +105,7 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "./docker-compose.yml"
+          source: "../docker-compose.yml"
           target: "/home/yc-user/kittygram"
       
       - name: Restart Docker containers using Docker Compose
