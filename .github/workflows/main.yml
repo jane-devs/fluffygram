@@ -95,6 +95,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_and_push
     steps:
+      - name: Check the repository structure
+        run: |
+          ls -R /github/workspace
       - name: SSH into server and deploy
         uses: appleboy/scp-action@master
         with:
