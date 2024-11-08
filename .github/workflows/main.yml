@@ -102,7 +102,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          source: "docker-compose.yml"
+          source: "../docker-compose.yml"
           target: "/home/yc-user/kittygram"
       
       - name: Restart Docker containers using Docker Compose
