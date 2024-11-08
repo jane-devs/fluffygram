@@ -98,7 +98,7 @@ jobs:
       - name: Check the repository structure
         run: |
           echo "Current working directory: $(pwd)"
-          ls -alh ../docker-compose.yml  
+          ls -alh /home/runner/work/kittygram_final/kittygram_final 
       - name: SSH into server and deploy
         uses: appleboy/scp-action@master
         with:
