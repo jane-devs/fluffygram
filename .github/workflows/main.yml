@@ -106,15 +106,17 @@ jobs:
           passphrase: ${{ secrets.SERVER_SSH_PASSPHRASE }}
           source: "docker-compose.yml"
           target: "kittygram"
+      - name: Create .env
+        uses: ozaytsev86/create-env-file@v1
+        with:
+          ENV_POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          ENV_POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          ENV_POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          ENV_DB_NAME: ${{ secrets.DB_NAME }}
+          ENV_DB_HOST: ${{ secrets.DB_HOST }}
+          ENV_DB_PORT: ${{ secrets.DB_PORT }}
       - name: SSH commands to deploy
         uses: appleboy/ssh-action@master
-        env:
-          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-          DB_NAME: ${{ secrets.DB_NAME }}
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: ${{ secrets.DB_PORT }}
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
