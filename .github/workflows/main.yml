@@ -106,6 +106,20 @@ jobs:
           passphrase: ${{ secrets.SERVER_SSH_PASSPHRASE }}
           source: "docker-compose.yml"
           target: "kittygram"
+      - name: SSH commands to deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SERVER_SSH_PASSPHRASE }}
+          script: |
+            cd kittygram
+            sudo docker compose -f docker-compose.yml pull
+            sudo docker compose -f docker-compose.yml up -d
+            sudo docker compose -f docker-compose.yml exec backend python manage.py migrate
+            sudo docker compose -f docker-compose.yml exec backend python manage.py collectstatic
+            sudo docker compose -f docker-compose.yml exec backend cp -r /app/collected_static/. /backend_static/static/
           
   notify:
     runs-on: ubuntu-latest
