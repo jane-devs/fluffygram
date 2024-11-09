@@ -97,7 +97,7 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-      - name: Copy docker-compose.yml
+      - name: Copy docker-compose.yml on server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SERVER_IP }}
@@ -106,18 +106,28 @@ jobs:
           passphrase: ${{ secrets.SERVER_SSH_PASSPHRASE }}
           source: "docker-compose.yml"
           target: "kittygram"
-      - name: Create .env file
-        run: |
-          cd kittygram
-          echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" > .env
-          echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> .env
-          echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
-          echo "DB_NAME=${{ secrets.DB_NAME }}" >> .env
-          echo "DB_HOST=${{ secrets.DB_HOST }}" >> .env
-          echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env
-      - name: Verify .env file
-        run: |
-          cat .env
+      - name: Create .env file on server
+        uses: appleboy/ssh-action@master
+        env:
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SERVER_SSH_PASSPHRASE }}
+          script: |
+            cd kittygram
+            sudo echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" > .env
+            sudo echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> .env
+            sudo echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> .env
+            sudo echo "DB_NAME=${{ secrets.DB_NAME }}" >> .env
+            sudo echo "DB_HOST=${{ secrets.DB_HOST }}" >> .env
+            sudo echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env
       - name: SSH commands to deploy
         uses: appleboy/ssh-action@master
         with:
