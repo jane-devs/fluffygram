@@ -109,12 +109,12 @@ jobs:
       - name: Create .env
         uses: ozaytsev86/create-env-file@v1
         with:
-          ENV_POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-          ENV_POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-          ENV_POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-          ENV_DB_NAME: ${{ secrets.DB_NAME }}
-          ENV_DB_HOST: ${{ secrets.DB_HOST }}
-          ENV_DB_PORT: ${{ secrets.DB_PORT }}
+          INPUT_ENV_POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          INPUT_ENV_POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          INPUT_ENV_POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          INPUT_ENV_DB_NAME: ${{ secrets.DB_NAME }}
+          INPUT_ENV_DB_HOST: ${{ secrets.DB_HOST }}
+          INPUT_ENV_DB_PORT: ${{ secrets.DB_PORT }}
       - name: SSH commands to deploy
         uses: appleboy/ssh-action@master
         with:
@@ -124,6 +124,10 @@ jobs:
           passphrase: ${{ secrets.SERVER_SSH_PASSPHRASE }}
           script: |
             cd kittygram
+            if [ ! -f .env ]; then
+              echo ".env file not found!"
+              exit 1
+            fi
             sudo docker compose -f docker-compose.yml pull
             sudo docker compose -f docker-compose.yml up -d
             sudo docker compose -f docker-compose.yml exec backend python manage.py migrate
