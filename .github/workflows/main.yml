@@ -1,13 +1,13 @@
 name: Main Kittygram workflow
 
-on:
-  push:
-    branches:
-      - main
+on: push
 
 jobs:
   tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
     services:
       postgres:
         image: postgres:13.10
@@ -22,10 +22,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       
-      - name: Set up Python
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
-          python-version: 3.9
+          python-version: ${{ matrix.python-version }}
       
       - name: Install dependencies
         run: |
@@ -77,23 +77,23 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
         with:
-          username: turbonyasha
+          username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
     
       - name: Build and push backend image
         run: |
-          docker build -t turbonyasha/kittygram_backend ./backend
-          docker push turbonyasha/kittygram_backend
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/kittygram_backend ./backend
+          docker push ${{ secrets.DOCKER_USERNAME }}/kittygram_backend
           
       - name: Build and push frontend image
         run: |
-          docker build -t turbonyasha/kittygram_frontend ./frontend
-          docker push turbonyasha/kittygram_frontend
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/kittygram_frontend ./frontend
+          docker push ${{ secrets.DOCKER_USERNAME }}/kittygram_frontend
           
       - name: Build and push gateway image
         run: |
-          docker build -t turbonyasha/kittygram_gateway ./nginx
-          docker push turbonyasha/kittygram_gateway
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/kittygram_gateway ./nginx
+          docker push ${{ secrets.DOCKER_USERNAME }}/kittygram_gateway
           
   deploy:
     runs-on: ubuntu-latest
@@ -163,4 +163,4 @@ jobs:
         run: |
           curl -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage \
             -d chat_id=${{ secrets.TELEGRAM_CHAT_ID }} \
-            -d text="Задеплоили Киттиграм!"
+            -d text="(github.actor) задеплоил Kittygram с комментарием (github.event.commits[0].message[:20]): https://github.com/${{ github.repository }}/commit/${{github.sha}}"
