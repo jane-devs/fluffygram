@@ -1,4 +1,4 @@
-![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+![example workflow](https://github.com/turbonyasha/kittygram_final/actions/workflows/main.yml/badge.svg)
 
 #  Как работать с репозиторием финального задания
 
