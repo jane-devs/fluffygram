@@ -151,4 +151,6 @@ TELEGRAM_BOT_TOKEN        # токен вашего бота в Telegram
 Теперь каждое обновление, которое вы вносите в ваш проект, ваш сервер будет получать автоматически.
 
 ## Автор проекта
-[![GitHub](https://img.icons8.com/color/48/000000/github.png)Женя Скуратова](https://github.com/turbonyasha): telegram @janedoe
+Женя Скуратова
+github turbonyasha
+telegram @janedoel
