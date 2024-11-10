@@ -1,6 +1,6 @@
 ![example workflow](https://github.com/turbonyasha/kittygram_final/actions/workflows/main.yml/badge.svg)
 
-<img src="https://img.shields.io/badge/Nginx-green?logo=nginx&logoColor=white&style=for-the-badge">
+<img src="https://img.shields.io/badge/Python-blue?logo=python&logoColor=white&style=for-the-badge"><img src="https://img.shields.io/badge/Django-darkgreen?logo=django&logoColor=white&style=for-the-badge"><img src="https://img.shields.io/badge/Nginx-green?logo=nginx&logoColor=white&style=for-the-badge"><img src="https://img.shields.io/badge/Docker-blue?logo=docker&logoColor=white&style=for-the-badge"><img src="https://img.shields.io/badge/dockerhub-darkblue?logo=docker&logoColor=white&style=for-the-badge"><img src="https://img.shields.io/badge/Postgresql-lightblue?logo=postgresql&logoColor=white&style=for-the-badge">
 
 #  Kittygram: социальная сеть для обмена фотографиями любимых питомцев.
 
