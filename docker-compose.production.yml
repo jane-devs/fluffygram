@@ -11,7 +11,8 @@ services:
       - pg_data:/var/lib/postgresql/data
   backend:
     image: turbonyasha/kittygram_backend
-    depends-on: db
+    depends-on: 
+      - db
     env_file: .env
     volumes:
       - media:/media
