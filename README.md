@@ -1,5 +1,7 @@
 ![example workflow](https://github.com/turbonyasha/kittygram_final/actions/workflows/main.yml/badge.svg)
 
+<img src="https://img.shields.io/badge/Nginx-green?logo=nginx&logoColor=white&style=for-the-badge">
+
 #  Kittygram: социальная сеть для обмена фотографиями любимых питомцев.
 
 Пользователи получают возможность делиться своими котиками, а также имеют возможность добавлять каждому котику их персональные достижения.
