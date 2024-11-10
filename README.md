@@ -9,8 +9,8 @@
 
 ## Содержание
 - [Описание проекта Kittygram](#описание-проекта)
-- [Развернуть проект Kittygram на своем сервере](#развернуть-Kittygram-на-своем-сервере)
-- [Настроить CI/CD Kittygram на GitHub Actions](#Настройка-и-запуск-CI/CD-Kittygram-на-GitHub-Actions)
+- [Развернуть проект Kittygram на своем сервере](#развернуть-проект-Kittygram-на-своем-сервере)
+- [Настроить CI/CD Kittygram на GitHub Actions](#Настроить-CI/CD-Kittygram-на-GitHub-Actions)
 - [Автор проекта](#автор-проекта)
 
 ## Описание проекта
