@@ -154,5 +154,5 @@ TELEGRAM_BOT_TOKEN        # токен вашего бота в Telegram
 
 ## Автор проекта
 Женя Скуратова
-github turbonyasha
-telegram @janedoel
+- github turbonyasha
+- telegram @janedoel
