@@ -1,21 +1,21 @@
-![example workflow](https://github.com/turbonyasha/kittygram_final/actions/workflows/main.yml/badge.svg)
+![example workflow](https://github.com/turbonyasha/fluffygram/actions/workflows/main.yml/badge.svg)
 
 <img src="https://img.shields.io/badge/Python-blue?logo=python&logoColor=white&style=for-the-badge"><img src="https://img.shields.io/badge/Django-darkgreen?logo=django&logoColor=white&style=for-the-badge"><img src="https://img.shields.io/badge/Nginx-green?logo=nginx&logoColor=white&style=for-the-badge"><img src="https://img.shields.io/badge/Docker-blue?logo=docker&logoColor=white&style=for-the-badge"><img src="https://img.shields.io/badge/dockerhub-darkblue?logo=docker&logoColor=white&style=for-the-badge"><img src="https://img.shields.io/badge/Postgresql-lightblue?logo=postgresql&logoColor=white&style=for-the-badge">
 
-#  Kittygram: социальная сеть для обмена фотографиями любимых питомцев.
+#  Flyfflygram: социальная сеть для обмена фотографиями любимых питомцев.
 
 Пользователи получают возможность делиться своими котиками, а также имеют возможность добавлять каждому котику их персональные достижения.
 Похвастайся своим невероятным котом уже сегодня!
 
 ## Содержание
-- [Описание проекта Kittygram](#описание-проекта)
-- [Развернуть проект Kittygram на своем сервере](#развернуть-проект-Kittygram-на-своем-сервере)
-- [Настроить CI/CD Kittygram на GitHub Actions](#Настроить-CI/CD-Kittygram-на-GitHub-Actions)
+- [Описание проекта Flyfflygram](#описание-проекта)
+- [Развернуть проект Flyfflygram на своем сервере](#развернуть-проект-Flyfflygram-на-своем-сервере)
+- [Настроить CI/CD Flyfflygram на GitHub Actions](#Настроить-CI/CD-Flyfflygram-на-GitHub-Actions)
 - [Автор проекта](#автор-проекта)
 
 ## Описание проекта
 
-Для пользования проектом Kittygram пользователям необходимо зарегистрироваться на главной странице сайта или войти в аккаунт, если пользователь уже был зарегистрирован ранее.
+Для пользования проектом Flyfflygram пользователям необходимо зарегистрироваться на главной странице сайта или войти в аккаунт, если пользователь уже был зарегистрирован ранее.
 <p align="center">
 <img src="https://github.com/user-attachments/assets/2e184ce4-2055-43ee-8bdd-b0a8c0c305be" alt="Главная страница до регистрации/входа" width="400"/>
 </p>
@@ -41,12 +41,12 @@
 После того, как все необходимые и желаемые формы заполнены, пользователю необходимо нажать кнопку *Сохранить* внизу формы и котик будет добавлен на главную страницу проекта.
 Каждого котика на главной странице проекта пользователь может посмотреть и удивиться его достижениям.
 
-## Развернуть проект Kittygram на своем сервере
+## Развернуть проект Flyfflygram на своем сервере
 
 ### 1. Клонируйте репозиторий и перейдите в него в терминале:
 ```
-git@github.com:turbonyasha/kittygram_final.git
-cd kittygram_final
+git@github.com:turbonyasha/fluffygram.git
+cd fluffygram
 ```
 
 ### 2. Создайте Docker-образы и загрузите их на Dockerhub:
@@ -126,10 +126,10 @@ sudo service nginx reload
 
 Все изображения котиков, загружаемые пользователями, будут храниться в контейнере db в папке app/media.
 
-Готово, вы развернули проект Kittygram на своем сервере и он полностью готов к хозяевам котиков, которые жаждут поделиться фотографиями и достижениями своих питомцев!
+Готово, вы развернули проект fluffygram на своем сервере и он полностью готов к хозяевам котиков, которые жаждут поделиться фотографиями и достижениями своих питомцев!
 
 
-## Настройка и запуск CI/CD Kittygram на GitHub Actions
+## Настройка и запуск CI/CD fluffygram на GitHub Actions
 
 Проект предполагает автоматическое обновление Docker-образов на DockerHub, а также на вашем сервере после каждого пуша в любую ветку проекта. 
 Каждое изменение в вашей версии проекта будет сразу же доступно вашим пользователям и вам ничего не потребуется для этого делать.
